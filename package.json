@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "build:watch": "tsc --watch"
+    "build": "webpack",
+    "build:watch": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
