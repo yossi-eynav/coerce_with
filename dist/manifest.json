@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+  "name": "Shared Host",
+  "version": "0.0.1",
+  "background": {
+    "page": "background.html"
+  },
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+  "options_page": "options.html",
+  "browser_action": {
+    "default_title": "Inactive.",
+    "default_icon": "off.png"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "background",
+    "*://*/*"
+  ]
+}
