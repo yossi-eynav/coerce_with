@@ -6,7 +6,9 @@ setInterval(() => {
     const types = rules.map((rule) => rule.resourceType);
     const urls = rules.map((rule) => `*://${rule.domain}/*`);
 
-    chrome.webRequest.onBeforeRequest.addListener(handlerRequest, {types, urls}, ['blocking']);
+    if(rules.length) {
+        chrome.webRequest.onBeforeRequest.addListener(handlerRequest, {types, urls}, ['blocking']);
+    }
 
     function handlerRequest(request) {
         if(!window['isActive']) { return; }

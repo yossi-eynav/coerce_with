@@ -1,7 +1,7 @@
 const uuidV4  = require('uuid/v4');
 
 export function Rule(options) {
-    this.active = options.active || true;
+    this.active = options.active;
     this.domain = options.domain || '';
     this.resourceType = options.resourceType || '';
     this.coerceWith = options.coerceWith;
@@ -11,8 +11,8 @@ export function Rule(options) {
 Rule.prototype.isValid = function() {
     this.error = null;
 
-    if(!this.domain.match(/www\..*/)) {
-        this.error = 'Domain is invalid';
+    if(!this.domain) {
+        this.error = 'Domain is blank';
         return false;
     }
 
