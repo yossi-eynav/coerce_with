@@ -6,10 +6,10 @@
             <el-select v-model="newRule.resourceType" placeholder="Resource Type">
                 <el-option v-for="item in resourceTypes" :key="item.value" :label="item.label" :value="item.value"></el-option>
             </el-select>
-            <el-tooltip class="item" effect="dark" content="Please insert an anonymous function. That function receives a url and returns a string. (url) => url.replace('www', 'aaa')" placement="top">
-                <el-input v-bind:style="{width: '400px'}" placeholder="Coerce With" v-model="newRule.coerceWith"></el-input>
+            <el-tooltip class="item" v-bind:disabled="!!newRule.coerceWith" effect="dark" content="Please insert an anonymous function. That function receives a url and returns a string. (url) => url.replace('www', 'aaa')" placement="top">
+                <el-input v-bind:style="{width: '400px'}"  type="textarea" autosize placeholder="Coerce With" v-model="newRule.coerceWith"></el-input>
             </el-tooltip>
-            <el-button v-on:click="addRule" >Add new rule</el-button>
+            <el-button v-on:click="addRule">Add new rule</el-button>
         </div>
 
         <el-table  v-if="rules.length" :data="rules">
@@ -38,6 +38,11 @@
             <el-table-column
                     prop="coerceWith"
                     label="Coerce With">
+                <template scope="scope">
+                    <code>
+                        {{ scope.row.coerceWith }}
+                    </code>
+                </template>
             </el-table-column>
             <el-table-column
                     label="Actions"
@@ -130,5 +135,11 @@
 <style scoped>
     .add-rule {
         padding-bottom: 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    .add-rule > div:not(:last-child) {
+        margin-right: 15px;
     }
 </style>
