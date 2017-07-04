@@ -6,9 +6,9 @@
         window['isActive'] = !window['isActive'];
 
         if(window['isActive']) {
-            chrome.browserAction.setIcon({path: "./on.png"});
+            chrome.browserAction.setIcon({path: "./on.svg"});
         } else {
-            chrome.browserAction.setIcon({path: "./off.png"});
+            chrome.browserAction.setIcon({path: "./off.svg"});
         }
     }
 
